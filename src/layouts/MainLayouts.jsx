@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../pages/Shared/Navbar";
 import Footer from "../pages/Shared/Footer";
 import { Helmet } from "react-helmet-async";
-import Banner from "../pages/components/Banner";
+
 
 
 const MainLayouts = () => {
@@ -11,7 +11,7 @@ const MainLayouts = () => {
          
         <header className="w-11/12 xl:w-8/12 mx-auto">    
             <Navbar/>
-            <Banner/>
+            
         </header>
         <main className="w-11/12 xl:w-8/12 mx-auto min-h-screen">
             <Outlet/>

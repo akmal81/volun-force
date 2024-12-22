@@ -9,6 +9,7 @@ import AuthContext from "../../provider/AuthContext";
 
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import SocialLogin from "../Shared/SocialLogin";
 
 const Login = () => {
     const { loginUser } = useContext(AuthContext);
@@ -82,6 +83,11 @@ const Login = () => {
                             <button className="btn  bg-primary text-white">Register</button>
                         </div>
                     </form>
+                    <div className="divider">OR</div>
+                    <div className="flex items-center justify-center">
+
+                    <SocialLogin></SocialLogin>
+                    </div>
                     <div>
                         <p className="text-center pb-8">Already have an account
                             <Link to='/register' className="px-2 text-red-700 hover:font-bold">Register Now</Link>

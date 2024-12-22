@@ -9,6 +9,7 @@ import { updateProfile } from "firebase/auth";
 
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import SocialLogin from "../Shared/SocialLogin";
 
 
 
@@ -127,6 +128,11 @@ const Register = () => {
                             <button className="btn  bg-primary text-white">Register</button>
                         </div>
                     </form>
+                    <div className="divider">OR</div>
+                    <div className="flex items-center justify-center">
+
+                    <SocialLogin></SocialLogin>
+                    </div>
                     <div>
                         <p className="text-center pb-8">Already have an account
                             <Link to='/login' className="px-2 text-red-700 hover:font-bold">Login</Link>

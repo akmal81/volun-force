@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom'
 
 const Slider = ({ image, text }) => {
+  const heading =   text.split(':')
   return (
     <div
       className='w-full bg-center bg-cover h-[38rem]'
@@ -10,9 +11,10 @@ const Slider = ({ image, text }) => {
       }}
     >
       <div className='flex items-center justify-center w-full h-full '>
-        <div className='text-center bg-gray-900/70 py-8 px-8 rounded-xl'>
-          <h1 className='text-3xl font-semibold text-white lg:text-4xl'>
-            {text}
+        <div className='text-center bg-gray-900/70 py-8 px-8 md:w-1/2  rounded-xl'>
+          <h1 className='text-3xl font-semibold text-white mb-6 leading-relaxed lg:text-4xl'>
+           <span className='text-primary bg-white font-bold px-4 rounded-md '>{heading[0]}</span> <br />
+           <span>{heading[1]}</span>
           </h1>
           <br />
           <Link

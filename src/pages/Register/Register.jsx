@@ -101,7 +101,7 @@ const Register = () => {
                                 required />
 
                             <button
-                                onClick={() => setShow(!show)}
+                                onClick={(e) => {e.preventDefault();setShow(!show)}}
                                 className="absolute bottom-4 right-4">
                                 {
                                     show ?

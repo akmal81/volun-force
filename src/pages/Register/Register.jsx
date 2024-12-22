@@ -8,6 +8,7 @@ import AuthContext from "../../provider/AuthContext";
 import { updateProfile } from "firebase/auth";
 
 import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 
 
@@ -15,7 +16,8 @@ const Register = () => {
     const { registerUser } = useContext(AuthContext);
     const [show, setShow] = useState(false);
     const location = useLocation();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const fromWhere = location.state?.from || '/' ;
 
     const handleRegistration = (e) => {
         e.preventDefault();
@@ -24,7 +26,19 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         const photoUrl = form.photo.value;
-    
+
+        
+        if(!name||!email||!password||!photoUrl){
+            toast.error('Please Fill All the Field');
+            return
+        }
+        
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
+        if (!passwordRegex.test(password)) {
+           Swal.fire("Password must be at least 6 characters long, contain at least one uppercase letter, and one lowercase letter.");
+            return
+        }
 
         registerUser(email, password)
             .then(result => {
@@ -38,11 +52,13 @@ const Register = () => {
             })
             .then(() => {
                 Swal.fire('User Created successfully!!');
+                navigate(fromWhere, { replace: true });
             }
             )
             .catch(err => {
                 const errorCode = err.code;
                 const errorMessage = err.message;
+                toast.error('Something Went Worng!! Please Try again')
             })
 
     }

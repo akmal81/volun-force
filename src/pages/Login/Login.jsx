@@ -16,6 +16,8 @@ const Login = () => {
     const location = useLocation();
     const navigate = useNavigate()
 
+    const fromWhere = location.state?.from || '/' ;
+
     const handleLogin = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -23,8 +25,8 @@ const Login = () => {
         const password = form.password.value;
         loginUser(email, password)
             .then(result => {
-                console.log(result.user)
-                toast.success('Login Successful!!')
+                toast.success('Login Successful!!');
+                navigate(fromWhere, { replace: true });
             })
             .catch(err => {
                 const errorCode = err.code;

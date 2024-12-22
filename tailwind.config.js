@@ -7,7 +7,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors:{
+        primary:'#00A676',
+        secondary:'#070821',
+
+      }
+    },
   },
   plugins: [
     daisyui,

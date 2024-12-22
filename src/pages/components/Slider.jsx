@@ -5,7 +5,7 @@ const Slider = ({ image, text }) => {
   const heading =   text.split(':')
   return (
     <div
-      className='w-full bg-center bg-cover h-[38rem]'
+      className='w-full bg-center bg-cover h-[38rem] rounded-xl'
       style={{
         backgroundImage: `url(${image})`,
       }}

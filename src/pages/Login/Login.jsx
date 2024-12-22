@@ -6,8 +6,6 @@ import loginAnimation from "../../assets/lotti/login.json";
 import Lottie from "lottie-react";
 import AuthContext from "../../provider/AuthContext";
 
-
-import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import SocialLogin from "../Shared/SocialLogin";
 
@@ -31,7 +29,6 @@ const Login = () => {
             })
             .catch(err => {
                 const errorCode = err.code;
-                const errorMessage = err.message;
                 toast.error(errorCode);
             })
 
@@ -66,7 +63,7 @@ const Login = () => {
                                 required />
 
                             <button
-                                onClick={() => setShow(!show)}
+                                onClick={(e) => {e.preventDefault();setShow(!show)}}
                                 className="absolute bottom-4 right-4">
                                 {
                                     show ?

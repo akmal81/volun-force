@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
+import { Helmet } from 'react-helmet';
 
 const MyVolunteerRequest = () => {
 
@@ -57,6 +58,9 @@ const MyVolunteerRequest = () => {
 
     return (
         <div>
+            <Helmet>
+            <title>My request | VF</title>
+        </Helmet>
             <h2>My Volunteer Request</h2>
             {
                 request && request?.length > 0 ?

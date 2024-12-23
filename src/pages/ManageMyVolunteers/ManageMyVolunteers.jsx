@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
 import Swal from 'sweetalert2';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet';
 
 const ManageMyVolunteers = () => {
 
@@ -60,6 +61,9 @@ const ManageMyVolunteers = () => {
 
     return (
         <div>
+            <Helmet>
+            <title>My Posts | VF</title>
+        </Helmet>
             {myPosts && myPosts.length > 0 ? (
                 <div className="overflow-x-auto">
                     <table className="table">

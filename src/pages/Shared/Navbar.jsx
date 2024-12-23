@@ -4,6 +4,7 @@ import { useContext } from "react";
 import AuthContext from "../../provider/AuthContext";
 import toast from "react-hot-toast";
 import { CgProfile } from "react-icons/cg";
+import ToggleTheme from "../../utils/ToggleTheme";
 
 
 
@@ -28,16 +29,16 @@ const Navbar = () => {
         <li><NavLink to='/myVolunteerRequest'>My Volunteer Request</NavLink></li>
     </>
 
-    const handlelogOutUser =()=>{
+    const handlelogOutUser = () => {
         logOutUser()
-        .then(()=>{
-            toast.success('Log out successfull !!')
-        })
-        .catch(err => {
-            const errorCode = err.code;
-            const errorMessage = err.message;
-            toast.error('Something went worng Please try again!!')
-        })
+            .then(() => {
+                toast.success('Log out successfull !!')
+            })
+            .catch(err => {
+                const errorCode = err.code;
+                const errorMessage = err.message;
+                toast.error('Something went worng Please try again!!')
+            })
 
     }
 
@@ -71,7 +72,16 @@ const Navbar = () => {
                 <ul className="menu menu-horizontal px-1">
                     {links}
                 </ul>
+
             </div>
+
+            <div className="form-control w-52">
+                <input onClick={ToggleTheme} 
+                type="checkbox" 
+                className="toggle bg-primary border-primary toggle-accent" 
+                defaultChecked />
+            </div>
+            
             <div className="navbar-end">
                 <ul className="menu menu-horizontal px-1">
                     {
@@ -82,12 +92,12 @@ const Navbar = () => {
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
                             {
-                            user && user?.email? <img
-                            alt=""
-                            className="w-full h-full"
-                            src={user?.photoURL} />:<CgProfile className="w-full h-full" />
+                                user && user?.email ? <img
+                                    alt=""
+                                    className="w-full h-full"
+                                    src={user?.photoURL} /> : <CgProfile className="w-full h-full" />
                             }
-                           
+
                         </div>
                     </div>
                     <ul

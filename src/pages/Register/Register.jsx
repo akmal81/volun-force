@@ -10,6 +10,7 @@ import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import SocialLogin from "../Shared/SocialLogin";
+import { Helmet } from "react-helmet";
 
 
 
@@ -68,6 +69,9 @@ const Register = () => {
 
     return (
         <div className="hero bg-base-200 min-h-screen">
+            <Helmet>
+            <title>New User Registration | VF</title>
+        </Helmet>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="bg-white rounded-lg">
                     <Lottie animationData={registerAnimation}></Lottie>

@@ -5,12 +5,19 @@ import { format } from 'date-fns';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const AddVolunteerPost = () => {
   const { user } = useAuth();
+  const navigate = useNavigate()
   const [postDeadline, setPostDeadline] = useState(new Date());
   const formatedDate = format(new Date(postDeadline), 'dd/MM/yyyy');
-  
+
+  // date validation
+ 
+  if (postDeadline < new Date()) {
+    setPostDeadline(new Date())
+  }
   const handleAddPost = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -19,19 +26,20 @@ const AddVolunteerPost = () => {
     const description = form.description.value;
     const category = form.category.value;
     const location = form.location.value;
-    const volunteersNeeded = form.volunteersNeeded.value;
+    const volunteersNeeded = parseInt(form.volunteersNeeded.value);
     const deadline = postDeadline;
     const organizerName = user?.displayName;
     const organizerEmail = user?.email;
 
     const addPostData = { thumbnail, postTitle, description, category, location, volunteersNeeded, deadline, organizerName, organizerEmail }
-    
+
 
     try {
       await axios.post(`${import.meta.env.VITE_api_url}/posts`, addPostData
       )
       form.reset();
       Swal.fire('Volunteer Need Post added Successfully!!!')
+      navigate('/managePost')
 
     } catch (err) {
       toast.error(err.message)
@@ -116,9 +124,9 @@ const AddVolunteerPost = () => {
             <label className="label">
               <span className="label-text">No of volunteers needed</span>
             </label>
-            <input type="text"
+            <input type="number"
               name='volunteersNeeded'
-              placeholder="No of volunteers needed"
+              placeholder="please input a numeric value"
               className="input input-bordered"
               required />
           </div>
@@ -126,7 +134,7 @@ const AddVolunteerPost = () => {
           {/* Deadline */}
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Deadline</span>
+              <span className="label-text">Deadline <em>Please select valid date</em></span>
             </label>
             <DatePicker
               name='deadline'
@@ -135,6 +143,7 @@ const AddVolunteerPost = () => {
               dateFormat="dd/MM/yyyy"
               className="input input-bordered"
             />
+          
           </div>
 
           {/* Organizer name */}

@@ -11,13 +11,14 @@ import BeAVolunteer from "../pages/BeAVolunteer/BeAVolunteer";
 import ManageMyVolunteers from "../pages/ManageMyVolunteers/ManageMyVolunteers";
 import UpdateMyPost from "../pages/UpdateMyPost/UpdateMyPost";
 import MyVolunteerRequest from "../pages/MyVolunteerRequest/MyVolunteerRequest";
+import ErrorPage from "../pages/error/ErrorPage";
 
 const router = createBrowserRouter(
     [
         {
             path:'/',
             element: <MainLayouts/>,
-            errorElement:<h2>404 page not found</h2>,
+            errorElement:<ErrorPage/>,
             children:[
                 {
                     path:'/',

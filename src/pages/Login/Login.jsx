@@ -8,6 +8,7 @@ import AuthContext from "../../provider/AuthContext";
 
 import toast from "react-hot-toast";
 import SocialLogin from "../Shared/SocialLogin";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
     const { loginUser } = useContext(AuthContext);
@@ -36,6 +37,7 @@ const Login = () => {
 
     return (
         <div className="hero bg-base-200 min-h-screen">
+            <Helmet><title>Login | VF</title></Helmet>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="bg-white rounded-lg w-1/3">
                     <Lottie animationData={loginAnimation}></Lottie>

@@ -7,6 +7,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet';
 
 const UpdateMyPost = () => {
 
@@ -70,6 +71,9 @@ const UpdateMyPost = () => {
     return (
 
         <div>
+            <Helmet>
+            <title>Update My Post | VF</title>
+        </Helmet>
             <div className="">
                 <div className=' space-y-4'>
                     <form onSubmit={handleSubmitUpdate} className="card-body">

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import VolunteerPostCard from "../components/VolunteerPostCard";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
     const [posts, setPosts] = useState([]);
@@ -28,6 +29,9 @@ const Home = () => {
 
     return (
         <>
+        <Helmet>
+            <title>Home | VF</title>
+        </Helmet>
             <Banner />
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xl:w-10/12 gap-10 mx-auto mt-40">
                 {

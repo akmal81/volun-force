@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
@@ -14,7 +15,7 @@ const VolunteerPostCard = ({ post }) => {
                 <h2 className="card-title">{postTitle}</h2>
                 <div className="badge  border-primary text-primary badge-outline">{category}</div>
                 <p></p>
-                <p>Apply Before: {deadline}</p>
+                <p>Apply Before: {format(new Date(deadline), 'P')}</p>
                 <div className="card-actions">
                     <Link to={`/postDetails/${_id}`} className="btn bg-primary text-white border-none">View Details</Link>
                 </div>

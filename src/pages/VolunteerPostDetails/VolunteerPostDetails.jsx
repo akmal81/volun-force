@@ -1,10 +1,11 @@
+import { format } from 'date-fns';
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 
 const VolunteerPostDetails = () => {
     const post = useLoaderData();
 
-    const {_id, thumbnail, postTitle, description, category, location, volunteersNeeded, deadline, organizerName, organizerEmail}=post;
+    const {_id, thumbnail, postTitle, description, category, location, volunteersNeeded, deadline, }=post;
     
     return (
         <div className="hero bg-base-200 ">
@@ -19,10 +20,10 @@ const VolunteerPostDetails = () => {
              {description}
             </p>
             <p className="">
-             Apply Befor: {deadline}
+             Apply Befor: {format(new Date(deadline), 'dd/MM/yyyy')}
             </p>
             <p className="">
-             Apply Befor: {volunteersNeeded}
+            volunteers Needed: {volunteersNeeded}
             </p>
             <p className="">
             Category: {category}

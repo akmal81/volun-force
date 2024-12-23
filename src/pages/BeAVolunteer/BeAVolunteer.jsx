@@ -1,39 +1,59 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
+import { format } from 'date-fns';
+import DatePicker from 'react-datepicker';
 
 const BeAVolunteer = () => {
     const { user } = useAuth();
     const post = useLoaderData();
+    const navigate = useNavigate()
     const { thumbnail, postTitle, description, category, location, volunteersNeeded, deadline, organizerName, organizerEmail } = post;
 
     const handleSubmitRequest = (e) => {
         e.preventDefault();
         const form = e.target;
+        const thumbnail = form.thumbnail.value;
+        const postTitle = form.postTitle.value;
+        const description = form.description.value;
+        const category = form.category.value;
+        const location = form.location.value;
+        const volunteersNeeded = parseInt(form.volunteersNeeded.value);
+        const deadline = post.deadline;
+        const organizerName = form.organizerName.value;
+        const organizerEmail = form.organizerEmail.value;
+
         const volunteerName = form.volunteerName.value;
         const volunteerEmail = form.volunteerEmail.value;
         const suggestion = form.suggestion.value;
         const status = form.status.value;
 
-        const volunteerData = { volunteerEmail, volunteerName, suggestion, status }
-        const {_id, ...newPost} = post;
-        const volunteer_postId = _id;
-        const allData = {volunteer_postId, ...newPost, ...volunteerData }
-        console.log(allData)
+        const formData = {
+            thumbnail, postTitle, description, category, location, volunteersNeeded, deadline, organizerName, organizerEmail, volunteerName, volunteerEmail, suggestion, status
+        }
 
+        
+        
+        const volunteer_postId = post._id;
+        
+        const allData = {volunteer_postId, ...formData};
+
+     
 
             axios.post(`${import.meta.env.VITE_api_url}/volunteerRequest`, allData)
             .then((response)=>{
                 const insertedId = response.data.insertedId;
                 if(insertedId){
-                    Swal.fire('Request Sent Successful!!')
+                    Swal.fire('Request Sent Successful!!');
+                    navigate('/myVolunteerRequest')
                 }
             })
             .catch((error)=>{
-               
+            //    error?.status && toast(error.)
+            toast.error(error.response.data)
 
             })
     }
@@ -136,12 +156,13 @@ const BeAVolunteer = () => {
                         <label className="label">
                             <span className="label-text">Deadline</span>
                         </label>
-                        <input type="date"
+                        <DatePicker type="date"
                             name='deadline'
                             placeholder=""
-                            defaultValue={deadline}
+                            // defaultValue={deadline}
+                            value={format(new Date(deadline), 'P')}
                             readOnly
-                            className="input input-bordered"
+                            className="input input-bordered w-full"
                             required />
                     </div>
 

@@ -8,6 +8,8 @@ import PrivateRoute from "./PrivateRoute";
 import AddVolunteerPost from "../pages/AddVolunteerPost/AddVolunteerPost";
 import VolunteerPostDetails from "../pages/VolunteerPostDetails/VolunteerPostDetails";
 import BeAVolunteer from "../pages/BeAVolunteer/BeAVolunteer";
+import ManageMyVolunteers from "../pages/ManageMyVolunteers/ManageMyVolunteers";
+import UpdateMyPost from "../pages/UpdateMyPost/UpdateMyPost";
 
 const router = createBrowserRouter(
     [
@@ -25,7 +27,7 @@ const router = createBrowserRouter(
                     element:<PrivateRoute>
                     <VolunteerPostDetails/>
                     </PrivateRoute>,
-                    loader: ({params}) => fetch(`http://localhost:5000/post/${params.id}`)
+                    loader: ({params}) => fetch(`${import.meta.env.VITE_api_url}/post/${params.id}`)
                    
 
                 },
@@ -35,9 +37,21 @@ const router = createBrowserRouter(
                     element:<PrivateRoute>
                         <BeAVolunteer/>
                     </PrivateRoute>,
-                     loader: ({params}) => fetch(`http://localhost:5000/post/${params.id}`)
+                     loader: ({params}) => fetch(`${import.meta.env.VITE_api_url}/post/${params.id}`)
                    
 
+                },
+                {
+                    path:'/managePost',
+                    element:<PrivateRoute>
+                        <ManageMyVolunteers/>
+                    </PrivateRoute>
+                },
+                {
+                    path:'/updateMyPost/:id',
+                    element:<PrivateRoute>
+                        <UpdateMyPost/>
+                    </PrivateRoute>
                 },
                 {
                     path:'/allPosts',

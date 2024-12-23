@@ -23,8 +23,8 @@ const Navbar = () => {
     </>
 
     const dropdownLinks = <>
-        <li><NavLink to='addPost'>Add Volunteer need Post</NavLink></li>
-        <li><NavLink to='managePost'>Manage My Posts</NavLink></li>
+        <li><NavLink to='/addPost'>Add Volunteer need Post</NavLink></li>
+        <li><NavLink to='/managePost'>Manage My Posts</NavLink></li>
     </>
 
     const handlelogOutUser =()=>{
@@ -77,7 +77,7 @@ const Navbar = () => {
                         user && user.email ? <button onClick={handlelogOutUser}>Log out</button> : authLinks
                     }
                 </ul>
-                <div className="dropdown dropdown-end">
+                <div className="dropdown dropdown-end z-50">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
                             {
@@ -90,6 +90,7 @@ const Navbar = () => {
                         </div>
                     </div>
                     <ul
+
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                         {dropdownLinks}

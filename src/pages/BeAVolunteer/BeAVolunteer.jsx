@@ -20,7 +20,9 @@ const BeAVolunteer = () => {
 
         const volunteerData = { volunteerEmail, volunteerName, suggestion, status }
         const {_id, ...newPost} = post;
-        const allData = { ...newPost, ...volunteerData }
+        const volunteer_postId = _id;
+        const allData = {volunteer_postId, ...newPost, ...volunteerData }
+        console.log(allData)
 
 
             axios.post(`${import.meta.env.VITE_api_url}/volunteerRequest`, allData)

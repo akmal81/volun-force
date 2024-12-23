@@ -22,6 +22,9 @@ const VolunteerPostDetails = () => {
              Apply Befor: {deadline}
             </p>
             <p className="">
+             Apply Befor: {volunteersNeeded}
+            </p>
+            <p className="">
             Category: {category}
             </p>
             <p className="">

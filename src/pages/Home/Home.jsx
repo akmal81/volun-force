@@ -33,9 +33,7 @@ const Home = () => {
                 {
                     posts.map(post => <VolunteerPostCard key={post._id} post={post}></VolunteerPostCard>)
                 }
-                {
-                    posts.map(post => console.log(post._id))
-                }
+               
             </div>
             <div className="text-center mt-16">
                 <Link to='/allPosts' className="btn bg-primary text-lg text-white">See All</Link>

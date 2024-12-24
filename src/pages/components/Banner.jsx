@@ -1,12 +1,10 @@
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react'
 
-// Import Swiper styles
+import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 
-// import required modules
+
 import { Autoplay, Pagination, Navigation } from 'swiper/modules'
 import Slider from './Slider'
 
@@ -16,7 +14,7 @@ import bgimg3 from '../../assets/slider/slide3.png'
 
 export default function Carousel() {
   return (
-    <div className='container px-6 py-10 mx-auto rounded-xl'>
+    <div className='py-10 mx-auto '>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}

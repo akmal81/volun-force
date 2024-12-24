@@ -13,10 +13,11 @@ const MainLayouts = () => {
             <Navbar/>
             
         </header>
-        <main className="w-11/12 xl:w-8/12 mx-auto min-h-screen">
+        
+        <main className="">
             <Outlet/>
         </main>
-        <footer className="w-11/12 xl:w-8/12 mx-auto">
+        <footer className="w-full bg-secondary">
             <Footer/>
         </footer>
         </>

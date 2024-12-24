@@ -6,6 +6,7 @@ import router from './router/router.jsx'
 import AuthProvider from './provider/AuthProvider.jsx'
 import { Toaster } from 'react-hot-toast'
 import { HelmetProvider } from 'react-helmet-async'
+import { Tooltip } from 'react-tooltip'
 
 
 createRoot(document.getElementById('root')).render(
@@ -14,6 +15,7 @@ createRoot(document.getElementById('root')).render(
       <AuthProvider>
         <RouterProvider router={router} />
         <Toaster />
+        <Tooltip />
       </AuthProvider>
    </HelmetProvider>
   </StrictMode>,

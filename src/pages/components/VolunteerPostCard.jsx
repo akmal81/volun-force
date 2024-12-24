@@ -7,7 +7,7 @@ const VolunteerPostCard = ({ post }) => {
     const { _id, thumbnail, postTitle, category, deadline, } = post;
 
     return (
-        <div className="card   shadow-xl bg-white">
+        <div className="card  border bg-white">
             <div>
                 <img className="w-full rounded-t-xl" src={thumbnail} alt="" />
             </div>
@@ -15,9 +15,9 @@ const VolunteerPostCard = ({ post }) => {
                 <h2 className="card-title">{postTitle}</h2>
                 <div className="badge  border-primary text-primary badge-outline">{category}</div>
                 <p></p>
-                <p>Apply Before: {format(new Date(deadline), 'P')}</p>
+                <p className=""><strong>Will Expire:</strong> <span className="text-primary">{format(new Date(deadline), 'P')}</span></p>
                 <div className="card-actions">
-                    <Link to={`/postDetails/${_id}`} className="btn bg-primary text-white border-none">View Details</Link>
+                    <Link to={`/postDetails/${_id}`} className="btn bg-primary hover:bg-secondary text-white border-none">View Details</Link>
                 </div>
             </div>
         </div>

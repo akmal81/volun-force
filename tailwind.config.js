@@ -12,6 +12,10 @@ export default {
         primary:'#00A676',
         secondary:'#070821',
 
+      },
+      backgroundImage: {
+        'subscribe': "url('/src/assets/bg/sub.jpg')",
+        'allpost': "url('/src/assets/bg/allpost.jpg')",
       }
     },
   },

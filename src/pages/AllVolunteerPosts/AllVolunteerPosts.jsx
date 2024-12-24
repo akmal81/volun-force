@@ -24,16 +24,18 @@ const AllVolunteerPosts = () => {
     if(!posts) return<LoadingSpinner></LoadingSpinner>
 
     return (
-        <div>
+        <section className='mt-6'>
             <Helmet><title>All Volunteer Posts</title></Helmet>
-            AllVolunteerPosts: {posts.length}
 
-            <div>
-                <label className="input input-bordered flex items-center gap-2">
+
+            <div className='bg-allpost bg-no-repeat bg-cover bg-center  h-[20rem] flex flex-col gap-6 items-center justify-center' >
+                <h2 className='text-5xl font-bold text-white p-3 rounded-lg backdrop-brightness-50 '>All Volunteer Posts</h2>
+                <label 
+                className="input input-bordered flex w-2/3 md:w-2/5 items-center gap-2">
                     <input 
                     type="text" 
                     onChange={e=>setSearch(e.target.value)}
-                    className="grow" 
+                    className="grow " 
                     placeholder="Search" />
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -47,15 +49,24 @@ const AllVolunteerPosts = () => {
                     </svg>
                 </label>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xl:w-10/12 gap-10 mx-auto mt-40">
+          
+            <div className="w-8/12 md:w-10/12 lg:w-8/12 mx-auto mt-32 space-y-16">
+          
+            <div className="grid grid-cols-1 
+            md:grid-cols-2 
+            xl:grid-cols-3 
+            xl:w-10/12 
+            gap-10
+             mx-auto mt-">
                 {
                     posts.map(post => <VolunteerPostCard key={post._id} post={post}></VolunteerPostCard>)
                 }
 
             </div>
+            </div>
 
 
-        </div>
+        </section>
     );
 };
 

@@ -18,7 +18,7 @@ const MyVolunteerRequest = () => {
 
     const fetchAllRequest = async () => {
         const { data } = await axios.get(
-            `${import.meta.env.VITE_api_url}/requests/${user.email}`
+            `${import.meta.env.VITE_api_url}/requests/${user.email}`, {withCredentials: true}
         )
         setRequest(data);
     }

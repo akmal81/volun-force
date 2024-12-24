@@ -1,16 +1,40 @@
-import React from 'react';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 import { format } from 'date-fns';
 import DatePicker from 'react-datepicker';
+import LoadingSpinner from '../components/LoadingSpinner';
+import { Helmet } from 'react-helmet';
 
 const BeAVolunteer = () => {
     const { user } = useAuth();
-    const post = useLoaderData();
+    // const post = useLoaderData();
     const navigate = useNavigate()
+
+    const { id } = useParams()
+    const [post, setPost] = useState(null);
+
+    useEffect(() => {
+        const fetchPost = () => {
+            try {
+                axios.get(`${import.meta.env.VITE_api_url}/post/${id}`, { withCredentials: true })
+                    .then(res => setPost(res.data))
+
+            } catch (err) {
+
+            }
+
+        }
+        fetchPost()
+    }, [id])
+
+    if (!post) return <LoadingSpinner />;
+
+
+
     const { thumbnail, postTitle, description, category, location, volunteersNeeded, deadline, organizerName, organizerEmail } = post;
 
     const handleSubmitRequest = (e) => {
@@ -35,25 +59,25 @@ const BeAVolunteer = () => {
             thumbnail, postTitle, description, category, location, volunteersNeeded, deadline, organizerName, organizerEmail, volunteerName, volunteerEmail, suggestion, status
         }
 
-        
-        
+
+
         const volunteer_postId = post._id;
-        
-        const allData = {volunteer_postId, ...formData};
 
-     
+        const allData = { volunteer_postId, ...formData };
 
-            axios.post(`${import.meta.env.VITE_api_url}/volunteerRequest`, allData)
-            .then((response)=>{
+
+
+        axios.post(`${import.meta.env.VITE_api_url}/volunteerRequest`, allData)
+            .then((response) => {
                 const insertedId = response.data.insertedId;
-                if(insertedId){
+                if (insertedId) {
                     Swal.fire('Request Sent Successful!!');
                     navigate('/myVolunteerRequest')
                 }
             })
-            .catch((error)=>{
-            //    error?.status && toast(error.)
-            toast.error(error.response.data)
+            .catch((error) => {
+                //    error?.status && toast(error.)
+                toast.error(error.response.data)
 
             })
     }
@@ -61,6 +85,7 @@ const BeAVolunteer = () => {
 
     return (
         <div className="">
+            <Helmet><title>Be a Volunteer</title></Helmet>
             <div className=' space-y-4'>
                 <form onSubmit={handleSubmitRequest} className="card-body">
 
@@ -142,7 +167,7 @@ const BeAVolunteer = () => {
                         <label className="label">
                             <span className="label-text">No of volunteers needed</span>
                         </label>
-                        <input type="text"
+                        <input type="number"
                             name='volunteersNeeded'
                             placeholder=""
                             defaultValue={volunteersNeeded}
@@ -150,9 +175,9 @@ const BeAVolunteer = () => {
                             className="input input-bordered"
                             required />
                     </div>
-                    
-                       
-                    
+
+
+
 
                     {/* Deadline */}
                     <div className="form-control">

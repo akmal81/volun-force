@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import VolunteerPostCard from '../components/VolunteerPostCard';
+import { Helmet } from 'react-helmet';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const AllVolunteerPosts = () => {
 
@@ -19,8 +21,11 @@ const AllVolunteerPosts = () => {
         fetchAllPosts()
     }, [search])
    
+    if(!posts) return<LoadingSpinner></LoadingSpinner>
+
     return (
         <div>
+            <Helmet><title>All Volunteer Posts</title></Helmet>
             AllVolunteerPosts: {posts.length}
 
             <div>

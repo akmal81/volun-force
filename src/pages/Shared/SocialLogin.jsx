@@ -12,7 +12,7 @@ const SocialLogin = () => {
     const location = useLocation();
     const navigate = useNavigate()
 
-    const fromWhere = location.state?.from || '/' ;
+    const fromWhere = location?.state || '/' ;
 
     
 

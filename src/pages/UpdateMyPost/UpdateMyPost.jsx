@@ -21,7 +21,7 @@ const UpdateMyPost = () => {
         const fetchPostByID = async () => {
             const { data } = await axios.get(
                 `${import.meta.env.VITE_api_url
-                }/post/${id}`
+                }/post/${id}`, {withCredentials: true}
             )
             if (!data) {
                 <LoadingSpinner></LoadingSpinner>
@@ -46,11 +46,9 @@ const UpdateMyPost = () => {
         const organizerName = form.organizerName.value;
         const organizerEmail = form.organizerEmail.value;
 
-        const updatedData = {thumbnail, postTitle, description, category, location, volunteersNeeded, deadline, organizerName, organizerEmail}
-        console.table({updatedData})
+        const updatedData = { thumbnail, postTitle, description, category, location, volunteersNeeded, deadline, organizerName, organizerEmail }
 
-
-        try{
+        try {
 
             await axios.put(
                 `${import.meta.env.VITE_api_url}/updatePost/${id}`, updatedData
@@ -60,20 +58,17 @@ const UpdateMyPost = () => {
             navigate('/managePost')
 
         }
-        catch(err){
+        catch (err) {
             toast.error(err.message)
         }
-        
-
     }
-
 
     return (
 
         <div>
             <Helmet>
-            <title>Update My Post | VF</title>
-        </Helmet>
+                <title>Update My Post | VF</title>
+            </Helmet>
             <div className="">
                 <div className=' space-y-4'>
                     <form onSubmit={handleSubmitUpdate} className="card-body">

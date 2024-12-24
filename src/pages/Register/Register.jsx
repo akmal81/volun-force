@@ -19,7 +19,7 @@ const Register = () => {
     const [show, setShow] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
-    const fromWhere = location.state?.from || '/' ;
+    const fromWhere = location?.state|| '/' ;
 
     const handleRegistration = (e) => {
         e.preventDefault();

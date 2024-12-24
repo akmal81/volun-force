@@ -6,6 +6,8 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+
 
 const AddVolunteerPost = () => {
   const { user } = useAuth();
@@ -35,7 +37,7 @@ const AddVolunteerPost = () => {
 
 
     try {
-      await axios.post(`${import.meta.env.VITE_api_url}/posts`, addPostData
+      await axios.post(`${import.meta.env.VITE_api_url}/posts`, addPostData, {withCredentials: true}
       )
       form.reset();
       Swal.fire('Volunteer Need Post added Successfully!!!')
@@ -48,6 +50,7 @@ const AddVolunteerPost = () => {
 
   return (
     <div>
+      <Helmet><title>Add Post</title></Helmet>
       <h2>AddVolunteerPost</h2>
       <div className=' space-y-4'>
         <form onSubmit={handleAddPost} className="card-body">

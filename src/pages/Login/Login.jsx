@@ -9,6 +9,7 @@ import AuthContext from "../../provider/AuthContext";
 import toast from "react-hot-toast";
 import SocialLogin from "../Shared/SocialLogin";
 import { Helmet } from "react-helmet";
+import axios from "axios";
 
 const Login = () => {
     const { loginUser } = useContext(AuthContext);
@@ -16,7 +17,8 @@ const Login = () => {
     const location = useLocation();
     const navigate = useNavigate()
 
-    const fromWhere = location.state?.from || '/' ;
+    const fromWhere = location?.state|| '/';
+    
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -25,11 +27,20 @@ const Login = () => {
         const password = form.password.value;
         loginUser(email, password)
             .then(result => {
+                
+                const user = { email: email }
+                
+                axios.post(`${import.meta.env.VITE_api_url}/jwt`, user, {withCredentials: true})
+                .then(res=>{
+                    console.log(res.data)
+                })
                 toast.success('Login Successful!!');
                 navigate(fromWhere, { replace: true });
+               
             })
             .catch(err => {
                 const errorCode = err.code;
+                // console.log(errorCode)
                 toast.error(errorCode);
             })
 
@@ -65,7 +76,7 @@ const Login = () => {
                                 required />
 
                             <button
-                                onClick={(e) => {e.preventDefault();setShow(!show)}}
+                                onClick={(e) => { e.preventDefault(); setShow(!show) }}
                                 className="absolute bottom-4 right-4">
                                 {
                                     show ?
@@ -85,7 +96,7 @@ const Login = () => {
                     <div className="divider">OR</div>
                     <div className="flex items-center justify-center">
 
-                    <SocialLogin></SocialLogin>
+                        <SocialLogin></SocialLogin>
                     </div>
                     <div>
                         <p className="text-center pb-8">Already have an account

@@ -29,7 +29,7 @@ const router = createBrowserRouter(
                     element:<PrivateRoute>
                     <VolunteerPostDetails/>
                     </PrivateRoute>,
-                    loader: ({params}) => fetch(`${import.meta.env.VITE_api_url}/post/${params.id}`)
+                    // loader: ({params}) => fetch(`${import.meta.env.VITE_api_url}/post/${params.id}`)
                    
 
                 },
@@ -39,7 +39,7 @@ const router = createBrowserRouter(
                     element:<PrivateRoute>
                         <BeAVolunteer/>
                     </PrivateRoute>,
-                     loader: ({params}) => fetch(`${import.meta.env.VITE_api_url}/post/${params.id}`)
+                    //  loader: ({params}) => fetch(`${import.meta.env.VITE_api_url}/post/${params.id}`)
                    
 
                 },

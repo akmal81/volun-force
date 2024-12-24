@@ -5,7 +5,7 @@ import { RouterProvider } from 'react-router-dom'
 import router from './router/router.jsx'
 import AuthProvider from './provider/AuthProvider.jsx'
 import { Toaster } from 'react-hot-toast'
-import { HelmetProvider } from 'react-helmet-async'
+import { Helmet, HelmetProvider } from 'react-helmet-async'
 
 
 createRoot(document.getElementById('root')).render(

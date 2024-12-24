@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import VolunteerPostCard from "../components/VolunteerPostCard";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const Home = () => {
     const [posts, setPosts] = useState([]);
@@ -25,7 +26,7 @@ const Home = () => {
         fetchPosts();
     }, []);
 
-
+    if(!posts) return <LoadingSpinner></LoadingSpinner>
 
     return (
         <>

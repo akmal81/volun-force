@@ -12,6 +12,7 @@ const Navbar = () => {
 
     const { user, logOutUser } = useContext(AuthContext)
 
+
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/allPosts'>All volunteer Need posts</NavLink></li>
@@ -85,7 +86,7 @@ const Navbar = () => {
             <div className="navbar-end">
                 <ul className="menu menu-horizontal px-1">
                     {
-                        user && user.email ? <button onClick={handlelogOutUser}>Log out</button> : authLinks
+                        user && user?.email ? <button onClick={handlelogOutUser}>Log out</button> : authLinks
                     }
                 </ul>
                 <div className="dropdown dropdown-end z-50">

@@ -1,12 +1,34 @@
+import axios from 'axios';
 import { format } from 'date-fns';
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const VolunteerPostDetails = () => {
-  const post = useLoaderData();
+  const {id}= useParams()
+  const [post, setPost] = useState(null);
+
+  useEffect(()=>{
+    const fetchPost =  ()=>{
+      try{
+        axios.get(`${import.meta.env.VITE_api_url}/post/${id}`, {withCredentials: true})
+        .then(res=>setPost(res.data))
+
+      }catch(err){
+
+      }
+      
+    }
+    fetchPost()
+  },[id])
+  
+  if (!post) return <LoadingSpinner/>;
+  
+
 
   const { _id, thumbnail, postTitle, description, category, location, volunteersNeeded, deadline, } = post;
+  const formattedDeadline = deadline && !isNaN(new Date(deadline)) ? format(new Date(deadline), 'dd/MM/yyyy') : 'Invalid date';
 
   return (
     <div className="hero bg-base-200 ">
@@ -24,7 +46,8 @@ const VolunteerPostDetails = () => {
               {description}
             </p>
             <p className="">
-              Apply Befor: {format(new Date(deadline), 'dd/MM/yyyy')}
+              {/* Apply Befor: {format(new Date(deadline), 'dd/MM/yyyy')} */}
+              {formattedDeadline}
             </p>
             <p className="">
               Volunteers Needed: {volunteersNeeded}

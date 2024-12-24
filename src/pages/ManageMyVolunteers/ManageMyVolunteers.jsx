@@ -6,6 +6,7 @@ import { format } from 'date-fns';
 import Swal from 'sweetalert2';
 import toast from 'react-hot-toast';
 import { Helmet } from 'react-helmet';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const ManageMyVolunteers = () => {
 
@@ -22,11 +23,12 @@ const ManageMyVolunteers = () => {
     const fetchMyVolunteersPosts = async () => {
         const { data } = await axios.get(
             `${import.meta.env.VITE_api_url
-            }/myVolunteersPosts/${user?.email}`
+            }/myVolunteersPosts/${user?.email}`, { withCredentials: true }
         )
         setMyPosts(data)
     }
 
+if(!myPosts) return <LoadingSpinner/>
 
     const handleDeletePost = (id) => {
         Swal.fire({

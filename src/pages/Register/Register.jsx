@@ -10,7 +10,7 @@ import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import SocialLogin from "../Shared/SocialLogin";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -38,7 +38,7 @@ const Register = () => {
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
         if (!passwordRegex.test(password)) {
-           Swal.fire("Password must be at least 6 characters long, contain at least one uppercase letter, and one lowercase letter.");
+           toast.error("Password must be at least 6 characters long, contain at least one uppercase letter, and one lowercase letter.");
             return
         }
 

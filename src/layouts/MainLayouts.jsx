@@ -8,7 +8,7 @@ import { Helmet } from "react-helmet-async";
 const MainLayouts = () => {
     return (
         <>
-         
+         <Helmet><title>VH | Home</title></Helmet>
         <header className="w-11/12 xl:w-8/12 mx-auto">    
             <Navbar/>
             

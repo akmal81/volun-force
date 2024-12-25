@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import PageHeader from '../Shared/PageHeader';
 
 
 const AddVolunteerPost = () => {
@@ -15,10 +16,12 @@ const AddVolunteerPost = () => {
   const [postDeadline, setPostDeadline] = useState(new Date());
   const formatedDate = format(new Date(postDeadline), 'dd/MM/yyyy');
 
+
   // date validation
- 
+
   if (postDeadline < new Date()) {
-    setPostDeadline(new Date())
+    setPostDeadline(new Date());
+    
   }
   const handleAddPost = async (e) => {
     e.preventDefault();
@@ -37,7 +40,7 @@ const AddVolunteerPost = () => {
 
 
     try {
-      await axios.post(`${import.meta.env.VITE_api_url}/posts`, addPostData, {withCredentials: true}
+      await axios.post(`${import.meta.env.VITE_api_url}/posts`, addPostData, { withCredentials: true }
       )
       form.reset();
       Swal.fire('Volunteer Need Post added Successfully!!!')
@@ -49,140 +52,148 @@ const AddVolunteerPost = () => {
   }
 
   return (
-    <div>
+    <div className='mt-6'>
       <Helmet><title>Add Post</title></Helmet>
-      <h2>AddVolunteerPost</h2>
-      <div className=' space-y-4'>
-        <form onSubmit={handleAddPost} className="card-body">
+      <PageHeader image={'bg-addpost'} title={'Add Volunteer Need Post'} ></PageHeader>
+      <section className='w-8/12 md:w-10/12  mx-auto my-32'>
+        <div className='lg:w-8/12 md:w-full mx-auto shadow-lg' >
+          <form onSubmit={handleAddPost} className="card-body shadow-lg">
 
-          {/* thumbnail */}
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Thumbnail</span>
-            </label>
-            <input type="url"
-              name='thumbnail'
-              placeholder="Photo url"
+            {/* thumbnail */}
+
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
 
 
-              className="input input-bordered"
-              required />
-          </div>
-          {/* post Title */}
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Post Title</span>
-            </label>
-            <input type="text"
-              name='postTitle'
-              placeholder="Post Title"
-              className="input input-bordered"
-              required />
-          </div>
-
-          {/* description */}
-
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Description</span>
-            </label>
-            <input type="text"
-              name='description'
-              placeholder="Description"
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-base">Thumbnail</span>
+                </label>
+                <input type="url"
+                  name='thumbnail'
+                  placeholder="Photo url"
 
 
-              className="input input-bordered"
-              required />
-          </div>
+                  className="input input-bordered"
+                  required />
+              </div>
+              {/* post Title */}
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-base">Post Title</span>
+                </label>
+                <input type="text"
+                  name='postTitle'
+                  placeholder="Post Title"
+                  className="input input-bordered"
+                  required />
+              </div>
+            </div>
+            
+            {/* description */}
 
-          {/* category */}
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text text-base">Description</span>
+              </label>
+              <textarea type="text"
+                name='description'
+                placeholder="Description"
+                rows={4}
+                className="textarea textarea-bordered"
+                required > </textarea>
+            </div>
 
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Category</span>
-            </label>
-            <input type="text"
-              name='category'
-              placeholder="Category"
-              className="input input-bordered"
-              required />
-          </div>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
+              {/* category */}
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-base">Category</span>
+                </label>
+                <input type="text"
+                  name='category'
+                  placeholder="Category"
+                  className="input input-bordered"
+                  required />
+              </div>
 
-          {/* Location */}
+              {/* Location */}
 
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Location</span>
-            </label>
-            <input type="text"
-              name='location'
-              placeholder="Location"
-              className="input input-bordered"
-              required />
-          </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-base">Location</span>
+                </label>
+                <input type="text"
+                  name='location'
+                  placeholder="Location"
+                  className="input input-bordered"
+                  required />
+              </div>
 
-          {/* No of volunteers needed */}
+              {/* No of volunteers needed */}
 
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">No of volunteers needed</span>
-            </label>
-            <input type="number"
-              name='volunteersNeeded'
-              placeholder="please input a numeric value"
-              className="input input-bordered"
-              required />
-          </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-base">No of volunteers needed</span>
+                </label>
+                <input type="number"
+                  name='volunteersNeeded'
+                  placeholder="Please input a numeric value"
+                  className="input input-bordered"
+                  required />
+              </div>
+            </div>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
+              {/* Deadline */}
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-base">Deadline <em>Please select valid date</em></span>
+                </label>
+                <DatePicker
+                  name='deadline'
+                  value={formatedDate}
+                  onChange={(date, e) => { e.preventDefault(); setPostDeadline(date) }}
+                  dateFormat="dd/MM/yyyy"
+                  className="input input-bordered w-full"
+                />
+               
+              </div>
 
-          {/* Deadline */}
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Deadline <em>Please select valid date</em></span>
-            </label>
-            <DatePicker
-              name='deadline'
-              value={formatedDate}
-              onChange={date => setPostDeadline(date)}
-              dateFormat="dd/MM/yyyy"
-              className="input input-bordered"
-            />
-          
-          </div>
+              {/* Organizer name */}
 
-          {/* Organizer name */}
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-base">Organizer name</span>
+                </label>
+                <input type="text"
+                  name='organizerName'
+                  placeholder=""
+                  defaultValue={user.displayName}
+                  readOnly
+                  className="input input-bordered"
+                  required />
+              </div>
 
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Organizer name</span>
-            </label>
-            <input type="text"
-              name='organizerName'
-              placeholder=""
-              defaultValue={user.displayName}
-              readOnly
-              className="input input-bordered"
-              required />
-          </div>
+              {/* Organizer email*/}
 
-          {/* Organizer email*/}
-
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Organizer email</span>
-            </label>
-            <input type="text"
-              name='organizerEmail'
-              placeholder=""
-              defaultValue={user.email}
-              readOnly
-              className="input input-bordered"
-              required />
-          </div>
-          <div className="form-control mt-6">
-            <button className="btn bg-primary text-white">Add Post</button>
-          </div>
-        </form>
-      </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-base">Organizer email</span>
+                </label>
+                <input type="text"
+                  name='organizerEmail'
+                  placeholder=""
+                  defaultValue={user.email}
+                  readOnly
+                  className="input input-bordered"
+                  required />
+              </div>
+            </div>
+            <div className="form-control mt-6">
+              <button className="btn bg-primary text-white">Add Post</button>
+            </div>
+          </form>
+        </div>
+      </section>
     </div>
   );
 };

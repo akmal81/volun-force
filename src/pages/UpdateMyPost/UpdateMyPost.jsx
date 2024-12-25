@@ -8,6 +8,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'
 import toast from 'react-hot-toast';
 import { Helmet } from 'react-helmet';
+import PageHeader from '../Shared/PageHeader';
 
 const UpdateMyPost = () => {
 
@@ -21,7 +22,7 @@ const UpdateMyPost = () => {
         const fetchPostByID = async () => {
             const { data } = await axios.get(
                 `${import.meta.env.VITE_api_url
-                }/post/${id}`, {withCredentials: true}
+                }/post/${id}`, { withCredentials: true }
             )
             if (!data) {
                 <LoadingSpinner></LoadingSpinner>
@@ -65,144 +66,149 @@ const UpdateMyPost = () => {
 
     return (
 
-        <div>
+        <div className='mt-6'>
             <Helmet>
                 <title>Update My Post | VF</title>
             </Helmet>
-            <div className="">
-                <div className=' space-y-4'>
+            <PageHeader image={'bg-addpost'} title={'Update Volunteer Need Post'} ></PageHeader>
+            <div className='w-8/12 md:w-10/12  mx-auto my-32'>
+                <div className='lg:w-8/12 md:w-full mx-auto shadow-lg'>
                     <form onSubmit={handleSubmitUpdate} className="card-body">
 
-                        {/* thumbnail */}
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Thumbnail</span>
-                            </label>
-                            <input type="url"
-                                name='thumbnail'
-                                placeholder=""
-                                defaultValue={myPosts.thumbnail}
+                        <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+                            {/* thumbnail */}
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text text-base">Thumbnail</span>
+                                </label>
+                                <input type="url"
+                                    name='thumbnail'
+                                    placeholder=""
+                                    defaultValue={myPosts.thumbnail}
 
-                                className="input input-bordered"
-                                required />
+                                    className="input input-bordered"
+                                    required />
+                            </div>
+                            {/* post Title */}
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text text-base">Post Title</span>
+                                </label>
+                                <input type="text"
+                                    name='postTitle'
+                                    placeholder=""
+                                    defaultValue={myPosts.postTitle}
+
+                                    className="input input-bordered"
+                                    required />
+                            </div>
                         </div>
-                        {/* post Title */}
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Post Title</span>
-                            </label>
-                            <input type="text"
-                                name='postTitle'
-                                placeholder=""
-                                defaultValue={myPosts.postTitle}
-
-                                className="input input-bordered"
-                                required />
-                        </div>
-
                         {/* description */}
 
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Description</span>
+                                <span className="label-text text-base">Description</span>
                             </label>
-                            <input type="text"
+                            <textarea type="text"
                                 name='description'
                                 placeholder=""
+                                rows={4}
                                 defaultValue={myPosts.description}
-
-                                className="input input-bordered"
+                                className="textarea textarea-bordered resize"
                                 required />
+
                         </div>
+                        <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
+                            {/* category */}
 
-                        {/* category */}
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text text-base">Category</span>
+                                </label>
+                                <input type="text"
+                                    name='category'
+                                    placeholder=""
+                                    defaultValue={myPosts.category}
 
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Category</span>
-                            </label>
-                            <input type="text"
-                                name='category'
-                                placeholder=""
-                                defaultValue={myPosts.category}
+                                    className="input input-bordered"
+                                    required />
+                            </div>
 
-                                className="input input-bordered"
-                                required />
+                            {/* Location */}
+
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text text-base">Location</span>
+                                </label>
+                                <input type="text"
+                                    name='location'
+                                    placeholder=""
+                                    defaultValue={myPosts.location}
+
+                                    className="input input-bordered"
+                                    required />
+                            </div>
+
+                            {/* No of volunteers needed */}
+
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text text-base">No of volunteers needed</span>
+                                </label>
+                                <input type="text"
+                                    name='volunteersNeeded'
+                                    placeholder=""
+                                    defaultValue={myPosts.volunteersNeeded}
+
+                                    className="input input-bordered"
+                                    required />
+                            </div>
                         </div>
+                        <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
 
-                        {/* Location */}
+                            
+                            {/* Deadline */}
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text text-base">Deadline</span>
+                                </label>
+                                <DatePicker
+                                    selected={postdeadline}
+                                    onChange={data => setPostDeadline(data)}
+                                    className="input input-bordered w-full"
+                                />
+                            </div>
 
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Location</span>
-                            </label>
-                            <input type="text"
-                                name='location'
-                                placeholder=""
-                                defaultValue={myPosts.location}
+                            {/* Organizer name */}
 
-                                className="input input-bordered"
-                                required />
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text text-base">Organizer name</span>
+                                </label>
+                                <input type="text"
+                                    name='organizerName'
+                                    placeholder=""
+                                    defaultValue={myPosts.organizerName}
+                                    readOnly
+                                    className="input input-bordered"
+                                    required />
+                            </div>
+
+                            {/* Organizer email*/}
+
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text text-base">Organizer email</span>
+                                </label>
+                                <input type="text"
+                                    name='organizerEmail'
+                                    placeholder=""
+                                    defaultValue={myPosts.organizerEmail}
+                                    readOnly
+                                    className="input input-bordered"
+                                    required />
+                            </div>
                         </div>
-
-                        {/* No of volunteers needed */}
-
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">No of volunteers needed</span>
-                            </label>
-                            <input type="text"
-                                name='volunteersNeeded'
-                                placeholder=""
-                                defaultValue={myPosts.volunteersNeeded}
-
-                                className="input input-bordered"
-                                required />
-                        </div>
-
-                        {/* Deadline */}
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Deadline</span>
-                            </label>
-                            <DatePicker
-                                selected={postdeadline}
-                                onChange={data => setPostDeadline(data)}
-                                className="input input-bordered"
-                            />
-                        </div>
-
-                        {/* Organizer name */}
-
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Organizer name</span>
-                            </label>
-                            <input type="text"
-                                name='organizerName'
-                                placeholder=""
-                                defaultValue={myPosts.organizerName}
-                                readOnly
-                                className="input input-bordered"
-                                required />
-                        </div>
-
-                        {/* Organizer email*/}
-
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Organizer email</span>
-                            </label>
-                            <input type="text"
-                                name='organizerEmail'
-                                placeholder=""
-                                defaultValue={myPosts.organizerEmail}
-                                readOnly
-                                className="input input-bordered"
-                                required />
-                        </div>
-
-
                         <div className="form-control mt-6">
                             <button className="btn bg-primary text-white">Update Post</button>
                         </div>

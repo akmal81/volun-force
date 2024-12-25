@@ -50,7 +50,7 @@ const AllVolunteerPosts = () => {
                 </label>
             </div>
           
-            <div className="w-8/12 md:w-10/12 lg:w-8/12 mx-auto mt-32 space-y-16">
+            <div className="w-8/12 md:w-10/12  mx-auto mt-32 space-y-16">
           
             <div className="grid grid-cols-1 
             md:grid-cols-2 

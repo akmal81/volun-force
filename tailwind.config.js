@@ -16,6 +16,7 @@ export default {
       backgroundImage: {
         'subscribe': "url('/src/assets/bg/sub.jpg')",
         'allpost': "url('/src/assets/bg/allpost.jpg')",
+        'addpost': "url('/src/assets/bg/addpost.jpg')",
       }
     },
   },

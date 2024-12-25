@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useParams } from 'react-router-dom';
 import LoadingSpinner from '../components/LoadingSpinner';
+import PageHeader from '../Shared/PageHeader';
 
 const VolunteerPostDetails = () => {
   const {id}= useParams()
@@ -29,17 +30,18 @@ const VolunteerPostDetails = () => {
 
   const { _id, thumbnail, postTitle, description, category, location, volunteersNeeded, deadline, } = post;
   const formattedDeadline = deadline && !isNaN(new Date(deadline)) ? format(new Date(deadline), 'dd/MM/yyyy') : 'Invalid date';
-
+ console.log(volunteersNeeded)
   return (
-    <div className="hero bg-base-200 ">
+    <div className=" mt-6 ">
       <Helmet>
             <title>Details Post | VF</title>
         </Helmet>
-      <div className="hero-content flex-col lg:flex-row-reverse">
+        <PageHeader image={'bg-addpost'} title={'Add Volunteer Need Post'} ></PageHeader>
+      <div className="hero-content justify-between gap-20 my-32 flex-col mx-auto lg:flex-row-reverse">
         <img
           src={thumbnail}
-          className="max-w-sm rounded-lg shadow-2xl" />
-        <div>
+          className="w-5/6 md:w-1/2 rounded-lg shadow-2xl" />
+        <div className='w-5/6 md:w-1/2'>
           <h1 className="text-5xl font-bold">{postTitle}</h1>
           <div className='space-y-2 mt-6'>
             <p className="">
@@ -62,9 +64,12 @@ const VolunteerPostDetails = () => {
               Location: {location}
             </p>
           </div>
+          {
+            !parseInt(volunteersNeeded) && <p className='text-red-700 font-bold'>All Volunteer Taken</p>
+          }
 
           <Link to={`/beAVolunteer/${_id}`}
-            className={`btn bg-primary ${!volunteersNeeded && 'btn-disabled'} text-white text-lg mt-8`}>
+            className={`btn bg-primary ${!parseInt(volunteersNeeded) && 'btn-disabled'} text-white text-lg mt-8`}>
             Be a Volunteer</Link>
         </div>
       </div>

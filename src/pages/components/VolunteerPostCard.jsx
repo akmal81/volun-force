@@ -4,8 +4,11 @@ import { Link } from "react-router-dom";
 
 const VolunteerPostCard = ({ post }) => {
    
-    const { _id, thumbnail, postTitle, category, deadline, } = post;
+    const { _id, thumbnail, postTitle, category, deadline, volunteersNeeded} = post;
 
+    const formatedDate =format(new Date(deadline), 'dd/MM/yyyy')
+    const originDateFormate =new Date(post.deadline)
+    const todayDate = new Date();
     return (
         <div className="card  border bg-white">
             <div>
@@ -15,9 +18,15 @@ const VolunteerPostCard = ({ post }) => {
                 <h2 className="card-title">{postTitle}</h2>
                 <div className="badge  border-primary text-primary badge-outline">{category}</div>
                 <p></p>
-                <p className=""><strong>Will Expire:</strong> <span className="text-primary">{format(new Date(deadline), 'P')}</span></p>
+                <p className=""><strong>Will Expire:</strong> <span
+                 className={`
+                 ${todayDate > originDateFormate ? 'text-red-700' : 'text-primary'}
+                 `}>{format(new Date(deadline), 'dd/MM/yyyy')}</span></p>
                 <div className="card-actions">
-                    <Link to={`/postDetails/${_id}`} className="btn bg-primary hover:bg-secondary text-white border-none">View Details</Link>
+                    <Link to={`/postDetails/${_id}`} 
+                    className="btn bg-primary hover:bg-secondary text-white border-none"
+                    
+                    >View Details</Link>
                 </div>
             </div>
         </div>

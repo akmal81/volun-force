@@ -22,14 +22,14 @@ const Home = () => {
                 setPosts(response.data);
             } catch (error) {
                 setErr(error);
-                toast.error(err)
+                toast.error(error.message)
             }
         };
 
         fetchPosts();
     }, []);
 
-    if (!posts) return <LoadingSpinner></LoadingSpinner>
+    if (!posts.length) return <LoadingSpinner></LoadingSpinner>
 
     return (
         <>

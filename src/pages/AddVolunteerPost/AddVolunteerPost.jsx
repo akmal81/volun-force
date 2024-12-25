@@ -88,7 +88,7 @@ const AddVolunteerPost = () => {
                   required />
               </div>
             </div>
-            
+
             {/* description */}
 
             <div className="form-control">
@@ -149,6 +149,7 @@ const AddVolunteerPost = () => {
                   <span className="label-text text-base">Deadline <em>Please select valid date</em></span>
                 </label>
                 <DatePicker
+                
                   name='deadline'
                   value={formatedDate}
                   onChange={(date, e) => { e.preventDefault(); setPostDeadline(date) }}

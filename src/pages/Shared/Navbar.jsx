@@ -14,11 +14,7 @@ const Navbar = () => {
 
     const { user, logOutUser } = useContext(AuthContext)
 
-    const options = {
-        followCursor: false,
-        shiftX: 20,
-        shiftY: 0,
-      };
+  console.log(user)
     const links = <>
         <li><NavLink to='/' className='font-medium text-base hover:text-primary'>Home</NavLink></li>
         <li><NavLink to='/allPosts' className='font-medium text-base hover:text-primary'>All volunteer Need posts</NavLink></li>
@@ -101,7 +97,7 @@ const Navbar = () => {
                                     <img
                                    alt='fdas'
                                    className="w-full h-full tooltiphover"
-                                   src={user?.photoURL} />
+                                   src={user?.auth.currentUser.photoURL} />
 
                                 </div>
                                 <p className="font-light text-sm">MyProfile</p>

@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import toast from 'react-hot-toast';
 import { Helmet } from 'react-helmet';
 import LoadingSpinner from '../components/LoadingSpinner';
+import PageHeader from '../Shared/PageHeader';
 
 const ManageMyVolunteers = () => {
 
@@ -62,10 +63,14 @@ if(!myPosts) return <LoadingSpinner/>
     }
 
     return (
-        <div>
+        <div className='mt-6'>
             <Helmet>
             <title>My Posts | VF</title>
         </Helmet>
+
+        <PageHeader image={'bg-addpost'} title={'Manage Volunteer Need Posts'} ></PageHeader>
+
+        <section className='w-10/12 xl:w-8/12 mx-auto my-32'>
             {myPosts && myPosts.length > 0 ? (
                 <div className="overflow-x-auto">
                     <table className="table">
@@ -100,6 +105,7 @@ if(!myPosts) return <LoadingSpinner/>
             ) : (
                 <div className='min-h-screen min-w-screen flex items-center justify-center'>No data found</div>
             )}
+            </section>
         </div>
     );
 };

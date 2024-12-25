@@ -21,7 +21,7 @@ const AddVolunteerPost = () => {
 
   if (postDeadline < new Date()) {
     setPostDeadline(new Date());
-    
+
   }
   const handleAddPost = async (e) => {
     e.preventDefault();
@@ -109,11 +109,25 @@ const AddVolunteerPost = () => {
                 <label className="label">
                   <span className="label-text text-base">Category</span>
                 </label>
-                <input type="text"
+                {/* <input type="text"
                   name='category'
                   placeholder="Category"
                   className="input input-bordered"
-                  required />
+                  required /> */}
+
+                <select 
+                name='category' defaultValue='Category'
+                 className="select select-bordered w-full max-w-xs">
+                  <option disabled >Category</option>
+                  <option>Food</option>
+                  <option>Environmental</option>
+                  <option>Education</option>
+                  <option>Health</option>
+                  <option>Emergency</option>
+                  <option>Animal Welfare</option>
+                  <option>Empowerment</option>
+                  <option>Recreation</option>
+                </select>
               </div>
 
               {/* Location */}
@@ -146,17 +160,17 @@ const AddVolunteerPost = () => {
               {/* Deadline */}
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-base">Deadline <em>Please select valid date</em></span>
+                  <span className="label-text text-base">Deadline <em className='text-red-500 text-xs'>Please select valid date</em></span>
                 </label>
                 <DatePicker
-                
+
                   name='deadline'
                   value={formatedDate}
                   onChange={(date, e) => { e.preventDefault(); setPostDeadline(date) }}
                   dateFormat="dd/MM/yyyy"
                   className="input input-bordered w-full"
                 />
-               
+
               </div>
 
               {/* Organizer name */}

@@ -42,7 +42,7 @@ const UpdateMyPost = () => {
         const description = form.description.value;
         const category = form.category.value;
         const location = form.location.value;
-        const volunteersNeeded = form.volunteersNeeded.value;
+        const volunteersNeeded = parseInt(form.volunteersNeeded.value);
         const deadline = postdeadline;
         const organizerName = form.organizerName.value;
         const organizerEmail = form.organizerEmail.value;
@@ -155,7 +155,7 @@ const UpdateMyPost = () => {
                                 <label className="label">
                                     <span className="label-text text-base">No of volunteers needed</span>
                                 </label>
-                                <input type="text"
+                                <input type="number"
                                     name='volunteersNeeded'
                                     placeholder=""
                                     defaultValue={myPosts.volunteersNeeded}

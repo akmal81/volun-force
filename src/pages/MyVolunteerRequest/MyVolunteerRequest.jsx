@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
 import { Helmet } from 'react-helmet';
+import PageHeader from '../Shared/PageHeader';
 
 const MyVolunteerRequest = () => {
 
@@ -57,11 +58,12 @@ const MyVolunteerRequest = () => {
 
 
     return (
-        <div>
+        <div className='mt-6 min-h-screen'>
             <Helmet>
             <title>My request | VF</title>
         </Helmet>
-            <h2>My Volunteer Request</h2>
+        <PageHeader image={'bg-addpost'} title={'My volunteer request'} ></PageHeader>
+        <section className='w-10/12 xl:w-8/12 mx-auto my-32'>
             {
                 request && request?.length > 0 ?
                     <div className="overflow-x-auto">
@@ -103,6 +105,7 @@ const MyVolunteerRequest = () => {
                     :
                     <div>No data Found</div>
             }
+            </section>
         </div>
     );
 };

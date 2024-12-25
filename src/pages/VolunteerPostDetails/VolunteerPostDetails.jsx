@@ -30,7 +30,7 @@ const VolunteerPostDetails = () => {
 
   const { _id, thumbnail, postTitle, description, category, location, volunteersNeeded, deadline, } = post;
   const formattedDeadline = deadline && !isNaN(new Date(deadline)) ? format(new Date(deadline), 'dd/MM/yyyy') : 'Invalid date';
- console.log(volunteersNeeded)
+
   return (
     <div className=" mt-6 ">
       <Helmet>

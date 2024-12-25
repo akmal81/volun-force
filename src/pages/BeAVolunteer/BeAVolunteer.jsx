@@ -12,63 +12,76 @@ import PageHeader from '../Shared/PageHeader';
 
 const BeAVolunteer = () => {
     const { user } = useAuth();
-    // const post = useLoaderData();
     const navigate = useNavigate()
-
     const { id } = useParams()
     const [post, setPost] = useState(null);
+    const [error, setError] = useState(null)
 
     useEffect(() => {
         const fetchPost = () => {
-            try {
+           
                 axios.get(`${import.meta.env.VITE_api_url}/post/${id}`, { withCredentials: true })
                     .then(res => setPost(res.data))
-
-            } catch (err) {
-
-            }
-
+                    .catch((err)=>{
+                        setError('Error fetching the post Data')
+                    })
         }
         fetchPost()
     }, [id])
 
+    if(error) {
+        toast.error('Something Went wrong')
+    }
     if (!post) return <LoadingSpinner />;
 
-
-
-    const { thumbnail, postTitle, description, category, location, volunteersNeeded, deadline, organizerName, organizerEmail } = post;
+    const { 
+        _id,
+        thumbnail, 
+        postTitle, 
+        description, 
+        category, 
+        location, 
+        volunteersNeeded, 
+        deadline, 
+        organizerName, 
+        organizerEmail } = post;
 
     const handleSubmitRequest = (e) => {
         e.preventDefault();
         const form = e.target;
-        const thumbnail = form.thumbnail.value;
-        const postTitle = form.postTitle.value;
-        const description = form.description.value;
-        const category = form.category.value;
-        const location = form.location.value;
-        const volunteersNeeded = parseInt(form.volunteersNeeded.value);
-        const deadline = post.deadline;
-        const organizerName = form.organizerName.value;
-        const organizerEmail = form.organizerEmail.value;
-
         const volunteerName = form.volunteerName.value;
         const volunteerEmail = form.volunteerEmail.value;
         const suggestion = form.suggestion.value;
         const status = form.status.value;
 
+        const volunteer_postId = _id;
+
         const formData = {
-            thumbnail, postTitle, description, category, location, volunteersNeeded, deadline, organizerName, organizerEmail, volunteerName, volunteerEmail, suggestion, status
+            volunteer_postId,
+            thumbnail,
+            postTitle, 
+            description, 
+            category, 
+            location, 
+            volunteersNeeded, 
+            deadline, 
+            organizerName, 
+            organizerEmail, 
+            volunteerName, 
+            volunteerEmail, 
+            suggestion, 
+            status
         }
 
 
 
-        const volunteer_postId = post._id;
+        
 
-        const allData = { volunteer_postId, ...formData };
+        // const allData = { volunteer_postId, ...formData };
 
 
 
-        axios.post(`${import.meta.env.VITE_api_url}/volunteerRequest`, allData)
+        axios.post(`${import.meta.env.VITE_api_url}/volunteerRequest`, formData)
             .then((response) => {
                 const insertedId = response.data.insertedId;
                 if (insertedId) {

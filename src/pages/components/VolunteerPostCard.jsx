@@ -17,7 +17,7 @@ const VolunteerPostCard = ({ post }) => {
             <span className="badge  border-primary text-xs text-primary no whitespace-nowrap badge-outline">{category}</span>
             </div>
 
-            <h2 className=" font-bold text-xl mt-10">{postTitle}</h2>
+            <h2 className=" font-bold text-xl text-slate-950 mt-10">{postTitle}</h2>
             <div className="card-body items-end flex-row justify-center mt-4 text-secondary p-0">
                 <p className="text-sm">Deadline: <span
                  className={`
@@ -25,7 +25,7 @@ const VolunteerPostCard = ({ post }) => {
                  `}>{format(new Date(deadline), 'dd/MM/yyyy')}</span></p>
                 <div className="card-actions">
                     <Link to={`/postDetails/${_id}`} 
-                    className=" whitespace-nowrap border px-2 py-2 rounded-lg border-green-600/25 hover:bg-primary hover:text-white "
+                    className=" whitespace-nowrap border px-2 py-2 rounded-lg border-primary text-slate-950 hover:bg-primary hover:text-white "
                     >View Details</Link>
                 </div>
             </div>

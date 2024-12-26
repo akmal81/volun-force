@@ -22,7 +22,7 @@ const Navbar = () => {
 
     const authLinks = <>
 
-        <li><NavLink to='/login' className="px-4 py-2 bg-primary text-white font-semibold border rounded-lg ">Login</NavLink></li>
+        <li><NavLink to='/login' className="px-4 py-2 bg-primary text-white hover:bg-secondary font-semibold rounded-lg">Login</NavLink></li>
         {/* <li><NavLink to='/register' className='font-medium text-base hover:text-primary'>Register</NavLink></li> */}
     </>
 
@@ -80,7 +80,7 @@ const Navbar = () => {
                 <div className="form-control">
                     <input onClick={ToggleTheme}
                         type="checkbox"
-                        className="toggle bg-primary border-primary "
+                        className="toggle toggle-sm bg-primary border-primary "
                         defaultChecked />
                 </div>
                 {
@@ -126,7 +126,7 @@ const Navbar = () => {
                     {
                         user && user?.email ?
                             <button onClick={handlelogOutUser}
-                                type="button" className="px-4 py-2 bg-primary text-white font-semibold border rounded-lg "
+                                type="button" className="px-4 py-2 bg-primary hover:bg-secondary text-white font-semibold rounded-lg"
                             >Logout</button>
                             : authLinks
                     }

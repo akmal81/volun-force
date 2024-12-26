@@ -69,16 +69,16 @@ const MyVolunteerRequest = () => {
                     <div className="overflow-x-auto">
                         <table className="table">
                             {/* head */}
-                            <thead>
+                            <thead className='bg-primary text-white'>
                                 <tr>
                                     <th>Sl.</th>
                                     <th>Post Title</th>
                                     <th>Dead Line</th>
                                     <th>Organizer</th>
-                                    <th>Action</th>
+                                    <th className='flex justify-end '>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody className='text-base'>
                                 {/* row 1 */}
 
                                 {
@@ -89,10 +89,10 @@ const MyVolunteerRequest = () => {
                                             <td>{requ?.postTitle}</td>
                                             <td>{format(new Date(requ?.deadline), "dd/MM/yyyy")}</td>
                                             <td>{requ?.organizerName}</td>
-                                            <td>
+                                            <td className='flex justify-end '>
                                                 <button
                                                     onClick={() => handleDeleteRequest(requ?._id)}
-                                                    className='btn bg-red-700 text-white'>Cancle Request</button>
+                                                    className='btn bg-red-700 text-white'>Cancle</button>
                                             </td>
                                         </tr>
                                     )

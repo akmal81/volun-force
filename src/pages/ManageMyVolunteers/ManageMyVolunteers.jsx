@@ -8,6 +8,8 @@ import toast from 'react-hot-toast';
 import { Helmet } from 'react-helmet';
 import LoadingSpinner from '../components/LoadingSpinner';
 import PageHeader from '../Shared/PageHeader';
+import { MdDelete } from "react-icons/md";
+import { GrUpdate } from "react-icons/gr";
 
 const ManageMyVolunteers = () => {
 
@@ -75,27 +77,29 @@ if(!myPosts) return <LoadingSpinner/>
                 <div className="overflow-x-auto">
                     <table className="table">
                         {/* head */}
-                        <thead>
+                        <thead className='bg-primary text-white '>
                             <tr>
                                 <th>SL.</th>
                                 <th>Post Title</th>
+                                <th>Category</th>
                                 <th>Dead Line</th>
                                 <th>Volunteers Needed</th>
-                                <th>Action</th>
+                                <th><h2 className='flex justify-end'>Action</h2></th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className='text-base'>
                             {myPosts.map((post, idx) => (
                                 <tr key={post._id || idx}>
                                     <th>{idx + 1}</th>
                                     <td>{post.postTitle}</td>
+                                    <td>{post.category}</td>
                                     <td>
-                                        {format(new Date(post.deadline), 'P')}
+                                        {format(new Date(post.deadline), 'dd/MM/yyyy')}
                                     </td>
                                     <td>{post.volunteersNeeded}</td>
-                                    <td>
-                                        <Link to={`/updateMyPost/${post._id}`} className="btn bg-primary text-white">Update</Link>
-                                        <button onClick={() => handleDeletePost(post?._id)} className="btn bg-red-700 text-white">Delete</button>
+                                    <td className='text-left flex gap-2 justify-end'>
+                                        <Link to={`/updateMyPost/${post._id}`} className="btn bg-primary text-white text-2xl"><GrUpdate /></Link>
+                                        <button onClick={() => handleDeletePost(post?._id)} className="btn bg-red-700 text-2xl text-white"><MdDelete /></button>
                                     </td>
                                 </tr>
                             ))}

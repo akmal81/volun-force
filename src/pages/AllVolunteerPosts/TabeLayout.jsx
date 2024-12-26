@@ -13,7 +13,7 @@ const TabeLayout = ({ post }) => {
             <td className="p-3">
                 <img src={post.thumbnail}  className='w-20 rounded-lg' alt="" />
             </td>
-            <td className="p-3">
+            <td className="p-3 font-semibold">
                 <p>{post.postTitle}</p>
             </td>
             <td className="p-3">

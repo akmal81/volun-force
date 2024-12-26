@@ -17,6 +17,9 @@ export default {
         'subscribe': "url('/src/assets/bg/sub.jpg')",
         'allpost': "url('/src/assets/bg/allpost.jpg')",
         'addpost': "url('/src/assets/bg/addpost.jpg')",
+        'update': "url('/src/assets/bg/update.jpg')",
+        'manage': "url('/src/assets/bg/manage.jpg')",
+        'add': "url('/src/assets/bg/add.jpg')",
       }
     },
   },

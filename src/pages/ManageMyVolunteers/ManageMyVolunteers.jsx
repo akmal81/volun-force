@@ -47,7 +47,7 @@ if(!myPosts) return <LoadingSpinner/>
 
                 try {
                     const { data } = await axios.delete(`${import.meta.env.VITE_api_url
-                        }/deletePost/${id}`)
+                        }/deletePost/${id}`, {withCredentials: true})
                     fetchMyVolunteersPosts()
 
                 } catch (err) {
@@ -70,7 +70,7 @@ if(!myPosts) return <LoadingSpinner/>
             <title>My Posts | VF</title>
         </Helmet>
 
-        <PageHeader image={'bg-addpost'} title={'Manage Volunteer Need Posts'} ></PageHeader>
+        <PageHeader image={'bg-manage'} title={'Manage Volunteer Need Posts'} ></PageHeader>
 
         <section className='w-10/12 xl:w-8/12 mx-auto my-32'>
             {myPosts && myPosts.length > 0 ? (

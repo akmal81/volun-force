@@ -52,7 +52,7 @@ const UpdateMyPost = () => {
         try {
 
             await axios.put(
-                `${import.meta.env.VITE_api_url}/updatePost/${id}`, updatedData
+                `${import.meta.env.VITE_api_url}/updatePost/${id}`, updatedData, {withCredentials: true}
             )
             form.reset();
             toast.success('Data Updated Successfully!!!')
@@ -70,7 +70,7 @@ const UpdateMyPost = () => {
             <Helmet>
                 <title>Update My Post | VF</title>
             </Helmet>
-            <PageHeader image={'bg-addpost'} title={'Update Volunteer Need Post'} ></PageHeader>
+            <PageHeader image={'bg-update'} title={'Update Volunteer Need Post'} ></PageHeader>
             <div className='w-8/12 md:w-10/12  mx-auto my-32'>
                 <div className='lg:w-8/12 md:w-full mx-auto shadow-lg'>
                     <form onSubmit={handleSubmitUpdate} className="card-body">

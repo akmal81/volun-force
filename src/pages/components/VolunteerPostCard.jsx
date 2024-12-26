@@ -12,13 +12,13 @@ const VolunteerPostCard = ({ post }) => {
     return (
         <div className="card  border p-4 bg-white">
             <div className="flex gap-4 items-start justify-between ">
-                <img className="w-20 rounded" src={thumbnail} alt="" />
+                <img className="w-24 rounded-lg" src={thumbnail} alt="" />
                 
             <span className="badge  border-primary text-xs text-primary no whitespace-nowrap badge-outline">{category}</span>
             </div>
 
-            <h2 className=" font-bold text-xl text-slate-950 mt-10">{postTitle}</h2>
-            <div className="card-body items-end flex-row justify-center mt-4 text-secondary p-0">
+            <h2 className=" font-bold text-xl text-slate-950 my-4">{postTitle}</h2>
+            <div className="card-body items-end flex-row justify-center mt-6 text-secondary p-0">
                 <p className="text-sm">Deadline: <span
                  className={`
                  ${todayDate > originDateFormate ? 'text-red-700' : 'text-primary'}

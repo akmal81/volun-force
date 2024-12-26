@@ -38,7 +38,7 @@ const MyVolunteerRequest = () => {
 
                 try {
                     const { data } = await axios.delete(`${import.meta.env.VITE_api_url
-                        }/deleteRequest/${id}`)
+                        }/deleteRequest/${id}`, {withCredentials:true})
                     fetchAllRequest()
 
                 } catch (err) {

@@ -54,7 +54,7 @@ const AddVolunteerPost = () => {
   return (
     <div className='mt-6'>
       <Helmet><title>Add Post</title></Helmet>
-      <PageHeader image={'bg-addpost'} title={'Add Volunteer Need Post'} ></PageHeader>
+      <PageHeader image={'bg-add'} title={'Add Volunteer Need Post'} ></PageHeader>
       <section className='w-8/12 md:w-10/12  mx-auto my-32'>
         <div className='lg:w-8/12 md:w-full mx-auto shadow-lg' >
           <form onSubmit={handleAddPost} className="card-body shadow-lg">

@@ -14,7 +14,7 @@ const Navbar = () => {
 
     const { user, logOutUser } = useContext(AuthContext)
 
-  console.log(user)
+ 
     const links = <>
         <li><NavLink to='/' className='font-medium text-base hover:text-primary'>Home</NavLink></li>
         <li><NavLink to='/allPosts' className='font-medium text-base hover:text-primary'>All volunteer Need posts</NavLink></li>

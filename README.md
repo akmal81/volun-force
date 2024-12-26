@@ -90,11 +90,6 @@ live link 2 : https://volunteer-management-15a5f.firebaseapp.com/
 
 ---
 
-## 🎯 How to Use  
-
-### Prerequisites  
-- Node.js installed  
-- MongoDB database  
 
 
 

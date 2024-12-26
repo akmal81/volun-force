@@ -14,7 +14,7 @@ const Navbar = () => {
 
     const { user, logOutUser } = useContext(AuthContext)
 
- 
+
     const links = <>
         <li><NavLink to='/' className='font-medium text-base hover:text-primary'>Home</NavLink></li>
         <li><NavLink to='/allPosts' className='font-medium text-base hover:text-primary'>All volunteer Need posts</NavLink></li>
@@ -90,20 +90,29 @@ const Navbar = () => {
                 <div className="dropdown dropdown-end z-50">
                     {
                         user && user?.email ?
-                        <div className="tooltiphover relative">
-                            <div tabIndex={0} role="button"
-                            className="btn gap-2 tooltiphover btn-circle avatar">
-                                <div className="w-10 rounded-full tooltiphover">
-                                    <img
-                                   alt='fdas'
-                                   className="w-full h-full tooltiphover"
-                                   src={user?.auth.currentUser.photoURL} />
+                            <div className="tooltiphover relative">
+                                <div tabIndex={0} role="button"
+                                    className="btn gap-2 tooltiphover btn-circle avatar" data-tip="hello">
+                                    <div className="w-10 rounded-full tooltiphover">
+                                        <img
+                                            alt='fdas'
+                                            className="w-full h-full tooltiphover"
+                                            src={user?.auth.currentUser.photoURL} />
 
+                                    </div>
+                                    <p className="font-light text-sm">MyProfile</p>
                                 </div>
-                                <p className="font-light text-sm">MyProfile</p>
+                                <p className="absolute
+                                 -bottom-14
+                                  left-1/2
+                                  -translate-x-1/2
+                                  -translate-y-1/2 
+                                   shadow-md
+                                     tooltip
+                                      text-base
+                                       text-primary
+                                        bg-white">{user?.displayName}</p>
                             </div>
-                                <p className="absolute -bottom-10 -left-8 shadow-md  tooltip text-base text-primary bg-white">{user?.displayName}</p>
-                               </div>
                             :
                             <div tabIndex={0} role="button" className='font-medium text-base hover:text-primary hidden md:block'>My Profile</div>
                     }
@@ -123,7 +132,7 @@ const Navbar = () => {
                     }
                 </ul>
             </div>
-           
+
         </div>
     );
 };

@@ -92,6 +92,7 @@ const AllVolunteerPosts = () => {
                                         </colgroup>
                                         <thead className="bg-primary">
                                             <tr className="text-left text-white">
+                                                <th className="p-3">Thumbnail</th>
                                                 <th className="p-3">Title</th>
                                                 <th className="p-3">Category</th>
                                                 <th className="p-3">Deadline</th>

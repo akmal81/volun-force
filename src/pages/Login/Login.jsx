@@ -100,7 +100,7 @@ const Login = () => {
                     </div>
                     <div>
                         <p className="text-center pb-8">Already have an account
-                            <Link to='/register' className="px-2 text-red-700 hover:font-bold">Log In</Link>
+                            <Link to='/register' className="px-2 text-red-700 hover:font-bold">Registration</Link>
                         </p>
                     </div>
                 </div>

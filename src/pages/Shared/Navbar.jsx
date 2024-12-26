@@ -103,14 +103,14 @@ const Navbar = () => {
                                     <p className="font-light text-sm">MyProfile</p>
                                 </div>
                                 <p className="absolute
-                                 -bottom-14
-                                  left-1/2
-                                  -translate-x-1/2
-                                  -translate-y-1/2 
-                                   shadow-md
-                                     tooltip
-                                      text-base
-                                       text-primary
+                                            -bottom-14
+                                            left-1/2
+                                            -translate-x-1/2
+                                            -translate-y-1/2 
+                                            shadow-md
+                                            tooltip
+                                            text-base
+                                         text-primary
                                         bg-white">{user?.displayName}</p>
                             </div>
                             :

@@ -29,11 +29,9 @@ const AllVolunteerPosts = () => {
     if (!posts) return <LoadingSpinner></LoadingSpinner>
 
     return (
-        <section className='mt-6'>
+        <section className=''>
             <Helmet><title>All Volunteer Posts</title></Helmet>
-
-
-            <div className='bg-allpost bg-no-repeat bg-cover bg-center  h-[20rem] flex flex-col gap-6 items-center justify-center' >
+            <div className=' bg-allpost bg-no-repeat bg-cover bg-center h-[20rem] flex flex-col gap-6 items-center justify-center' >
                 <h2 className='text-5xl font-bold text-white p-3 rounded-lg backdrop-brightness-50 '>All Volunteer Posts</h2>
                 <label
                     className="input input-bordered flex w-2/3 md:w-2/5 items-center gap-2">
@@ -69,7 +67,7 @@ const AllVolunteerPosts = () => {
                         <div className="grid grid-cols-1 
                                         md:grid-cols-2 
                                         xl:grid-cols-3 
-                                         
+                                        
                                         gap-10
                                         mx-auto mt-">
                             {

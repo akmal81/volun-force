@@ -38,7 +38,7 @@ const Home = () => {
             </Helmet>
 
             <Banner />
-            <section className="w-8/12 md:w-10/12 lg:w-8/12 mx-auto mt-32 space-y-16">
+            <section className="w-8/12 md:w-10/12 lg:w-8/12 mx-auto space-y-16">
 
 
                 <Title st1={'Recent'} title={'Volunteer Need Post'} />

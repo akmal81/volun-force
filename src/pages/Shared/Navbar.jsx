@@ -17,7 +17,10 @@ const Navbar = () => {
 
     const links = <>
         <li><NavLink to='/' className='font-medium text-base hover:text-primary'>Home</NavLink></li>
-        <li><NavLink to='/allPosts' className='font-medium text-base hover:text-primary'>All volunteer Need posts</NavLink></li>
+        <li><NavLink to='/allPosts' className='font-medium text-base hover:text-primary'>All posts</NavLink></li>
+        <li><NavLink to='/about' className='font-medium text-base hover:text-primary'>About</NavLink></li>
+        <li><NavLink to='/contact' className='font-medium text-base hover:text-primary'>Contact</NavLink></li>
+        <li><NavLink to='/Photos' className='font-medium text-base hover:text-primary'>Photos</NavLink></li>
     </>
 
     const authLinks = <>
@@ -46,7 +49,8 @@ const Navbar = () => {
             })
     }
     return (
-        <div className="navbar bg-base-100 py-2">
+        <div className="w-full h-fit bg-white fixed top-0">
+            <div className="navbar w-11/12 xl:w-8/12 mx-auto bg-base-100 py-2 z-10 backdrop-blur-xl">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -100,7 +104,7 @@ const Navbar = () => {
                                             src={user?.auth.currentUser.photoURL} />
 
                                     </div>
-                                    <p className="font-light text-sm">MyProfile</p>
+                                    {/* <p className="font-light text-sm">MyProfile</p> */}
                                 </div>
                                 <p className="absolute
                                             -bottom-14
@@ -133,6 +137,7 @@ const Navbar = () => {
                 </ul>
             </div>
 
+        </div>
         </div>
     );
 };

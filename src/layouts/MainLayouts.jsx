@@ -9,12 +9,12 @@ const MainLayouts = () => {
     return (
         <>
          <Helmet><title>VH | Home</title></Helmet>
-        <header className="w-11/12 xl:w-8/12 mx-auto">    
+        <header className="">    
             <Navbar/>
             
         </header>
         
-        <main className="">
+        <main className="mt-12">
             <Outlet/>
         </main>
         <footer className="w-full bg-secondary">

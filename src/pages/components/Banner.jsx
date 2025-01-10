@@ -14,7 +14,7 @@ import bgimg3 from '../../assets/slider/slide3.png'
 
 export default function Carousel() {
   return (
-    <div className='py-10 mx-auto '>
+    <div className='mb-20 mx-auto '>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}

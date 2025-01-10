@@ -115,7 +115,7 @@ const AddVolunteerPost = () => {
                   className="input input-bordered"
                   required /> */}
 
-                <select 
+                <select
                 name='category' defaultValue='Category'
                  className="select select-bordered w-full max-w-xs">
                   <option disabled >Category</option>
